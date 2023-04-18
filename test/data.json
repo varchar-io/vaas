@@ -1,0 +1,126 @@
+[{
+    "value": 4000,
+    "state": "US",
+    "parent": null
+  },
+  {
+    "value": 121,
+    "state": "AL",
+    "parent": "US"
+  },
+  {
+    "value": 34,
+    "state": "AK",
+    "parent": "US"
+  },
+  {
+    "value": 220,
+    "state": "AZ",
+    "parent": "US"
+  },
+  {
+    "value": 169,
+    "state": "AR",
+    "parent": "US"
+  },
+  {
+    "value": 452,
+    "state": "CA",
+    "parent": "US"
+  },
+  {
+    "value": 108,
+    "state": "CO",
+    "parent": "US"
+  },
+  {
+    "value": 310,
+    "state": "CT",
+    "parent": "US"
+  },
+  {
+    "value": 201,
+    "state": "DE",
+    "parent": "US"
+  },
+  {
+    "value": 254,
+    "state": "DC",
+    "parent": "US"
+  },
+  {
+    "value": 405,
+    "state": "FL",
+    "parent": "US"
+  },
+  {
+    "value": 333,
+    "state": "GA",
+    "parent": "US"
+  },
+  {
+    "value": 98,
+    "state": "HI",
+    "parent": "US"
+  },
+  {
+    "value": 72,
+    "state": "ID",
+    "parent": "US"
+  },
+  {
+    "value": 283,
+    "state": "IL",
+    "parent": "US"
+  },
+  {
+    "value": 365,
+    "state": "MA",
+    "parent": "US"
+  },
+  {
+    "value": 299,
+    "state": "MI",
+    "parent": "US"
+  },
+  {
+    "value": 45,
+    "state": "MT",
+    "parent": "US"
+  },
+  {
+    "value": 387,
+    "state": "NJ",
+    "parent": "US"
+  },
+  {
+    "value": 447,
+    "state": "NY",
+    "parent": "US"
+  },
+  {
+    "value": 346,
+    "state": "OH",
+    "parent": "US"
+  },
+  {
+    "value": 398,
+    "state": "PA",
+    "parent": "US"
+  },
+  {
+    "value": 499,
+    "state": "TX",
+    "parent": "US"
+  },
+  {
+    "value": 275,
+    "state": "VA",
+    "parent": "US"
+  },
+  {
+    "value": 312,
+    "state": "WA",
+    "parent": "US"
+  }
+]

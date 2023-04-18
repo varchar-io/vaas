@@ -1,0 +1,53 @@
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# build binary 
+bin/*
+
+# build staging folder
+build/*
+
+# any generated folders do not check in
+src/service/gen/*
+
+# all exclude all node_modules
+node_modules
+package-lock.json
+*/web/build/*
+dist/
+
+# ds_store looks like a macos thing
+.DS_STORE
+.vscode
+__pycache__
+.env
