@@ -2,6 +2,9 @@
 The javascript client SDK to create, publish and share flexible data visualization.
 You can use it in your `browser` or in `node.js`.
 
+## Landing page
+Visit vaas [landing page](https://columns.ai/dev) to get an overview of it.
+
 ## Installation
 ```bash
 npm install vaas
@@ -38,6 +41,11 @@ columns.publish('test-api', graph)
 });
 ```
 
+After executing a few lines of code as shown above, you will get a new link in the console, similar like 
+```shell
+https://columns.ai/visual/view/g-v0dK1sZUMlMeG4
+```
+Use `headless` parameter to make it embeddable in your app.
 
 ## API
 `vaas` is the code name for Columns SDK. It is a javascript library that allows you to create, publish and share data visualization.
