@@ -2,19 +2,10 @@ name: Node.js Package
 
 on:
   release:
-    types: [created]
+    types: [created, edited]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
-      - run: npm install
-
-  publish-gpr:
+  build-publish:
     needs: build
     runs-on: ubuntu-latest
     permissions:
@@ -26,6 +17,7 @@ jobs:
         with:
           node-version: 16
           registry-url: https://npm.pkg.github.com/
+      - run: npm install
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
