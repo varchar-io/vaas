@@ -15,12 +15,12 @@
  */
 
 // as a user, this is how I will use the SDK
-import { ChartType } from '../src/types/common';
-import { Columns } from '../src/index';
+import { ChartType } from 'vaas/types/common';
+import { Columns } from 'vaas';
 import rows from './data.json';
 
 // initialize the SDK and start building a graph
-const columns = new Columns('{YOUR_API_KEY}');
+const columns = new Columns('{YOU_API_KEY}');
 const data = columns.data(['state'], ['value'], rows);
 const graph = columns.graph(data);
 

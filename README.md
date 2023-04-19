@@ -47,6 +47,14 @@ https://columns.ai/visual/view/g-v0dK1sZUMlMeG4
 ```
 Use `headless` parameter to make it embeddable in your app.
 
+## Run example
+How to run the example in test folder:
+1. clone this repo: `git clone https://github.com/varchar-io/vaas`
+2. go to test folder: `cd vaas/test`, replace the {YOUR_API_KEY} in `index.ts` with your own API key obtained from [columns.ai](https://columns.ai/profile)
+3. build and run: `yarn && node dist/index.js`
+
+Open the URL in your browser returned from the test run. Customize the graph object and run it again see the changes.
+
 ## API
 `vaas` is the code name for Columns SDK. It is a javascript library that allows you to create, publish and share data visualization.
 The SDK includes all the core graphing object models and the API client to interact with the Columns API.

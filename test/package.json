@@ -1,0 +1,19 @@
+{
+  "name": "vaas-test",
+  "version": "1.0.0",
+  "description": "a test code snippet to demonstrate how to use vaas",
+  "main": "index.js",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "prepare": "npm run build",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/varchar-io/vaas.git"
+  },
+  "dependencies": {
+    "vaas": "^1.2.0"
+  }
+}
