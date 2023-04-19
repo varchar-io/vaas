@@ -6,7 +6,6 @@ on:
 
 jobs:
   build-publish:
-    needs: build
     runs-on: ubuntu-latest
     permissions:
       packages: write
