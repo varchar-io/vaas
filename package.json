@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/varchar-io/vaas#readme",
   "publishConfig": {
-    "@YOUR-USERNAME:registry": "https://npm.pkg.github.com"
+    "@shawncao:registry": "https://npm.pkg.github.com"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.58.0",
