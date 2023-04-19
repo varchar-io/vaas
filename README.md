@@ -1,5 +1,5 @@
-# vaas - visualization as a service
-The javascript client SDK to create, publish and share flexible data visualization.
+# VAAS (visualization as a service)
+The javascript SDK to create, publish and share flexible data visualization.
 You can use it in your `browser` or in `node.js`.
 
 ## Landing page
