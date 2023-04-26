@@ -102,8 +102,8 @@ const baseGraph = (
   };
 };
 
-// const baseURL = 'https://columns.ai/api';
-const baseURL = 'http://localhost:8088/api';
+const baseURL = 'https://columns.ai/api';
+// const baseURL = 'http://localhost:8088/api';
 
 export type VaasRequest = {
   // for tracking purpose

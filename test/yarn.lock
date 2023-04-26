@@ -64,7 +64,7 @@ short-unique-id@^4.4.4:
   resolved "https://registry.yarnpkg.com/short-unique-id/-/short-unique-id-4.4.4.tgz#a45df68303bbd2dbb5785ed7708e891809c9cb7a"
   integrity sha512-oLF1NCmtbiTWl2SqdXZQbo5KM1b7axdp0RgQLq8qCBBLoq+o3A5wmLrNM6bZIh54/a8BJ3l69kTXuxwZ+XCYuw==
 
-vaas@^1.2.0:
+vaas@^1.1.1:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/vaas/-/vaas-1.2.0.tgz#6341714d5a053171d46cc1d2f269136a71fb00dc"
   integrity sha512-LTHfH+ka8si6fbBptV6epUvss1hvjd7QdU46M/ZarrCo3ODMXOYP7PRwxBD9Be82LkeHDmXKM+PKmq+RvzYPuA==
