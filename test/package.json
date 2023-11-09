@@ -15,5 +15,9 @@
   },
   "dependencies": {
     "vaas": "^1.3.4"
+  },
+  "devDependencies": {
+    "@types/node": "^16.7.13",
+    "typescript": "^4.9.5"
   }
 }

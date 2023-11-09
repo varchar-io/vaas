@@ -20,13 +20,23 @@ import { Columns } from 'vaas';
 import rows from './data.json';
 
 // initialize the SDK and start building a graph
+// How to get your API key: sign in your Columns account, and go to your settings page.
+// there is a section listing your API key and button to copy it to your clipboard.
 const columns = new Columns('{YOU_API_KEY}');
+
+// rows is an example data set where you should organize your data in a similar way.
 const data = columns.data(['state'], ['value'], rows);
 const graph = columns.graph(data);
 
-// customise the graph (lots of options in its data model) 
-// and publish it to Columns to exchange for an embeddable link.
-graph.type = ChartType.MAP;
+// switch to different chart types: BAR, PIE, DOUGHGUT, LINE, AREA, SCATTER, etc.
+graph.type = ChartType.COLUMN;
+
+// customise the graph (lots of options in its data model)
+graph.settings.general.palette = ['#ff0000', '#00ff00', '#0000ff'];
+graph.settings.general.background = '#00000002';
+
+// Call the API to generate the graph and publish it
+// you can append "headless" to the returned URL for an embeddable link.
 (async () => {
   const url = await columns.publish('test-api', graph);
   console.log(`Columns graph: ${url}`);
