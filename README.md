@@ -45,7 +45,17 @@ After executing a few lines of code as shown above, you will get a new link in t
 ```shell
 https://columns.ai/visual/view/g-v0dK1sZUMlMeG4
 ```
-Use `headless` parameter to make it embeddable in your app.
+
+or
+
+```shell
+https://columns.ai/visual/view/g-qsQ3ySWSnFHJ9x
+```
+
+Append `headless` URL parameter to make it embeddable in your app or using the pure embed URL, eg. 
+```shell
+https://columns.ai/embed/g-qsQ3ySWSnFHJ9x
+```
 
 ## Run example
 How to run the example in test folder:
