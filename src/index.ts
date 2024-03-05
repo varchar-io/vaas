@@ -15,11 +15,18 @@
  */
 
 import axios, { AxiosInstance } from "axios";
-import { Annotation } from "./types/annotation";
-import { axis } from "./types/charts";
-import { ChartType, ColumnsVersion, Margin, SimpleData, Size, TITLE_ANNOTATION_ID, shortId } from "./types/common";
-import { defaultFont } from "./types/font";
-import { GraphData } from "./types/graph";
+import {
+  Annotation,
+  ChartType,
+  ColumnsVersion,
+  Margin,
+  SimpleData,
+  TITLE_ANNOTATION_ID,
+  shortId,
+  GraphData,
+  axis,
+  defaultFont,
+} from 'columns-graph-model';
 
 // provide a basic graph data object to start with
 const baseGraph = (
@@ -50,6 +57,7 @@ const baseGraph = (
       font: defaultFont(fontColor, 24),
       imageSize: null,
       anchor: 'middle',
+      byUser: true,
     });
   }
 
@@ -77,13 +85,22 @@ const baseGraph = (
         playback: 0,
         looping: false,
         autotitle: true,
-        tooltip: tooltipColor,
-        margin,
+        tooltip: {
+          color: tooltipColor,
+          background: '#000000DD',
+        },
+        margins: { [ChartType.COLUMN]: margin },
         background: 'transparent',
         gradient: null,
         palette: null,
         hideLegend: false,
         hideTooltip: false,
+        filter: null,
+        legend: 'dot',
+        maxKeyLength: 0,
+        percentage: false,
+        logScale: false,
+        hideBacklink: false,
       },
       metrics: null,
       axes: {
@@ -99,6 +116,8 @@ const baseGraph = (
     viewbox: null,
     cv: ColumnsVersion,
     summary: [],
+    conditions: [],
+    filter: { metrics: null, range: null, keys: null, origin: data },
   };
 };
 
@@ -134,7 +153,7 @@ export class Columns {
     keys.forEach((key) => { if (!(key in row)) throw new Error(`Key ${key} is not in data`); });
     metrics.forEach((metric) => { if (!(metric in row)) throw new Error(`Metric ${metric} is not in data`); });
 
-    return { keys, metrics, data: rows };
+    return { keys, metrics, data: rows, timestamp: Date.now() };
   }
 
   // the entry point to generate a graph data

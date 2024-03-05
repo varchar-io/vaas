@@ -15,14 +15,14 @@
  */
 
 // as a user, this is how I will use the SDK
-import { ChartType } from 'vaas/types/common';
-import { Columns } from 'vaas';
+import { ChartType } from 'columns-graph-model';
+import { Columns } from 'columns-sdk';
 import rows from './data.json';
 
 // initialize the SDK and start building a graph
 // How to get your API key: sign in your Columns account, and go to your settings page.
 // there is a section listing your API key and button to copy it to your clipboard.
-const columns = new Columns('{YOU_API_KEY}');
+const columns = new Columns('fDbHWom8eN6yo3');
 
 // rows is an example data set where you should organize your data in a similar way.
 const data = columns.data(['state'], ['value'], rows);
