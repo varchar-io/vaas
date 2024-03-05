@@ -22,7 +22,7 @@ import rows from './data.json';
 // initialize the SDK and start building a graph
 // How to get your API key: sign in your Columns account, and go to your settings page.
 // there is a section listing your API key and button to copy it to your clipboard.
-const columns = new Columns('fDbHWom8eN6yo3');
+const columns = new Columns('{YOU_API_KEY}');
 
 // rows is an example data set where you should organize your data in a similar way.
 const data = columns.data(['state'], ['value'], rows);
