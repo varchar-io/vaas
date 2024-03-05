@@ -7,8 +7,10 @@ Visit vaas [landing page](https://columns.ai/dev) to get an overview of it.
 
 ## Installation
 ```bash
-npm install vaas
+npm install columns-graph-model columns-sdk
 ```
+
+Check the latest version used by vass-test in current repo [test project package.json](test/package.json).
 
 ## Usage
 ### prequisites
@@ -17,14 +19,14 @@ npm install vaas
 
 ### basic usage
 ```javascript
-import { Columns } from 'vaas';
-import { ChartType } from 'vaas/types/common';
+import { Columns } from 'columns-sdk';
+import { ChartType } from 'columns-graph-model';
 import { API_KEY } from './config';
 
 // create a new client
 const columns = new Columns(API_KEY);
 
-// fill in your data, in below example, we will a sample data (~/test/data.json)
+// fill in your data, in below example, we will a sample data [test data](test/data.json)
 // build a basic graph object from the data
 const data = columns.data(['state'], ['value'], rows);
 const graph = columns.graph(data);
