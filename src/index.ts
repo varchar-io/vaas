@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+import { gzip, ungzip } from 'pako';
 import axios, { AxiosInstance } from "axios";
 import {
   Annotation,
@@ -27,6 +27,23 @@ import {
   axis,
   defaultFont,
 } from 'columns-graph-model';
+
+const compression = {
+  compress: (text: string): string => {
+    if (!text) {
+      return null;
+    }
+
+    return Buffer.from(gzip(text)).toString('base64');
+  },
+  decompress: (text: string): string => {
+    if (!text) {
+      return null;
+    }
+
+    return ungzip(Buffer.from(text, 'base64'), { to: 'string' });
+  },
+};
 
 // provide a basic graph data object to start with
 const baseGraph = (
@@ -57,6 +74,8 @@ const baseGraph = (
       font: defaultFont(fontColor, 24),
       imageSize: null,
       anchor: 'middle',
+      link: '',
+      width: 0,
       byUser: true,
     });
   }
@@ -101,6 +120,13 @@ const baseGraph = (
         percentage: false,
         logScale: false,
         hideBacklink: false,
+        accumulated: false,
+        gridLine: {
+          type: 'none',
+          color: '',
+        },
+        secondAxis: [],
+        targets: [],
       },
       metrics: null,
       axes: {
@@ -108,6 +134,7 @@ const baseGraph = (
         left,
         bottom,
         right: null,
+        top: null,
       },
       bar: null,
     },
@@ -122,7 +149,6 @@ const baseGraph = (
 };
 
 const baseURL = 'https://columns.ai/api';
-// const baseURL = 'http://localhost:8088/api';
 
 export type VaasRequest = {
   // for tracking purpose
@@ -164,6 +190,35 @@ export class Columns {
     }
 
     return baseGraph(data, '#000', '#DDD', null, margin);
+  }
+
+  // get a graph template by visual id, visual ID has to be accessible by current user
+  // your API key represents your identity
+  template(visualId: string): Promise<GraphData> {
+    if (!visualId) {
+      return null;
+    }
+
+    return new Promise((resolve, reject) => {
+      this.client.post('/snapshot/visual', { id: visualId }, {})
+        .then((data) => {
+          const v = data.data;
+          if (v) {
+            const gd = JSON.parse(compression.decompress(v.graph)) as GraphData;
+            gd.filter = null;
+            resolve(gd);
+            return;
+          }
+
+          // empty graph
+          resolve(null);
+        })
+        .catch((e) => {
+          console.error(e);
+          reject('Failed to read specified visual');
+        });
+    });
+
   }
 
   // publish the graph into columns service

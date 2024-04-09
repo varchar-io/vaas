@@ -14,8 +14,8 @@
     "url": "git+https://github.com/varchar-io/vaas.git"
   },
   "dependencies": {
-    "columns-graph-model": "^1.0.2",
-    "columns-sdk": "^0.0.4"
+    "columns-graph-model": "^1.0.24",
+    "columns-sdk": "^0.0.6"
   },
   "devDependencies": {
     "@types/node": "^16.7.13",

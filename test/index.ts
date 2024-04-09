@@ -15,29 +15,58 @@
  */
 
 // as a user, this is how I will use the SDK
-import { ChartType } from 'columns-graph-model';
+import { ChartType, GraphData } from 'columns-graph-model';
 import { Columns } from 'columns-sdk';
 import rows from './data.json';
 
-// initialize the SDK and start building a graph
-// How to get your API key: sign in your Columns account, and go to your settings page.
-// there is a section listing your API key and button to copy it to your clipboard.
-const columns = new Columns('{YOU_API_KEY}');
+const testFromScratch = async (columns: Columns): Promise<GraphData> => {
+  // rows is an example data set where you should organize your data in a similar way.
+  const data = columns.data(['state'], ['value'], rows);
+  const graph = columns.graph(data);
 
-// rows is an example data set where you should organize your data in a similar way.
-const data = columns.data(['state'], ['value'], rows);
-const graph = columns.graph(data);
+  // switch to different chart types: BAR, PIE, DOUGHGUT, LINE, AREA, SCATTER, etc.
+  graph.type = ChartType.COLUMN;
 
-// switch to different chart types: BAR, PIE, DOUGHGUT, LINE, AREA, SCATTER, etc.
-graph.type = ChartType.COLUMN;
+  // customise the graph (lots of options in its data model)
+  graph.settings.general.palette = ['#ff0000', '#00ff00', '#0000ff'];
+  graph.settings.general.background = '#00000002';
 
-// customise the graph (lots of options in its data model)
-graph.settings.general.palette = ['#ff0000', '#00ff00', '#0000ff'];
-graph.settings.general.background = '#00000002';
+  return graph;
+};
+
+// Call the API to generate the graph and publish it
+// you can append "headless" to the returned URL for an embeddable link.
+const testUsingTemplate = async (columns: Columns): Promise<GraphData> => {
+  // load a template from a pre-designed graph from Columns, so we just need to feed the data
+  // here we are using the example: https://columns.ai/visual/view/U6tALuJ3cTdPFw
+  const visualId = 'U6tALuJ3cTdPFw';
+  const graph = await columns.template(visualId);
+
+  // customise the graph (lots of options in its data model)
+  if (!graph) {
+    console.log(`Failed to load template from Columns: ${visualId}`);
+    return;
+  }
+
+  // rows is an example data set where you should organize your data in a similar way.
+  const data = columns.data(['state'], ['value'], rows);
+  graph.data = data;
+
+  return graph;
+};
 
 // Call the API to generate the graph and publish it
 // you can append "headless" to the returned URL for an embeddable link.
 (async () => {
-  const url = await columns.publish('test-api', graph);
+  // initialize the SDK and start building a graph
+  // How to get your API key: sign in your Columns account, and go to your settings page.
+  // there is a section listing your API key and button to copy it to your clipboard.
+  const columns = new Columns('{YOUR_API_KEY}');
+
+  // const graph = await testFromScratch(columns);
+  const graph = await testUsingTemplate(columns);
+
+  // publish the graph and get a new URL
+  const url = await columns.publish('test-template-api', graph);
   console.log(`Columns graph: ${url}`);
 })();

@@ -526,10 +526,12 @@ colorspace@1.1.x:
     color "^3.1.3"
     text-hex "1.0.x"
 
-columns-graph-model@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/columns-graph-model/-/columns-graph-model-1.0.2.tgz#3e448b0b282b99435feabd44237356da1758557c"
-  integrity sha512-1NMotVDePN3csRLPApFQrcR/ucYgsqDVGxdq1L6n3rU7OLhODc4Vn1kCwCieAIpMps7YN928yBZZmOSsySLWEA==
+columns-graph-model@^1.0.24:
+  version "1.0.24"
+  resolved "https://registry.yarnpkg.com/columns-graph-model/-/columns-graph-model-1.0.24.tgz#a2feb94bae091c5d9c91f79264d33dfa4414cef6"
+  integrity sha512-+UAD/2J16jwbYYi4ujN7AqYwb2d9bY9IwSKxujh5oz1HryI8xYSn/VQYjUPJB7m0SsezNnBcZ96sDxL+Qlosbg==
+  dependencies:
+    date-fns "^3.6.0"
 
 combined-stream@^1.0.8:
   version "1.0.8"
@@ -551,6 +553,11 @@ cross-spawn@^7.0.2:
     path-key "^3.1.0"
     shebang-command "^2.0.0"
     which "^2.0.1"
+
+date-fns@^3.6.0:
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-3.6.0.tgz#f20ca4fe94f8b754951b24240676e8618c0206bf"
+  integrity sha512-fRHTG8g/Gif+kSh50gaGEdToemgfj74aRX3swtiouboip5JDLAyDE9F11nHMIcvOaXeOC6D7SpNhi7uFyB7Uww==
 
 debug@2.6.9:
   version "2.6.9"
@@ -1631,6 +1638,11 @@ p-locate@^5.0.0:
   integrity sha512-LaNjtRWUBY++zB5nE/NwcaoMylSPk+S+ZHNB1TzdbMJMny6dynpAGt7X/tl/QYq3TIeE6nxHppbo2LGymrG5Pw==
   dependencies:
     p-limit "^3.0.2"
+
+pako@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/pako/-/pako-2.1.0.tgz#266cc37f98c7d883545d11335c00fbd4062c9a86"
+  integrity sha512-w+eufiZ1WuJYgPXbV/PO3NCMEc3xqylkKHzp8bxp1uW4qaSNQUkwmLLEc3kKsfz8lpV1F8Ht3U1Cm+9Srog2ug==
 
 parent-module@^1.0.0:
   version "1.0.1"

@@ -17,30 +17,58 @@ Check the latest version used by vass-test in current repo [test project package
 - [ ] create a Columns account at [columns.ai](https://columns.ai)
 - [ ] grab your API key from your [profile](https://columns.ai/profile) page.
 
+![copy api key](./copy-api-key.png)
+
 ### basic usage
+You can use the SDK in two ways: constrcut a graph object from scratch or use an existing graph as template.
+
+1. construct a graph object from scratch
 ```javascript
-import { Columns } from 'columns-sdk';
-import { ChartType } from 'columns-graph-model';
-import { API_KEY } from './config';
+const testFromScratch = async (columns: Columns): Promise<GraphData> => {
+  // rows is an example data set where you should organize your data in a similar way.
+  const data = columns.data(['state'], ['value'], rows);
+  const graph = columns.graph(data);
 
-// create a new client
-const columns = new Columns(API_KEY);
+  // switch to different chart types: BAR, PIE, DOUGHGUT, LINE, AREA, SCATTER, etc.
+  graph.type = ChartType.COLUMN;
 
-// fill in your data, in below example, we will a sample data [test data](test/data.json)
-// build a basic graph object from the data
-const data = columns.data(['state'], ['value'], rows);
-const graph = columns.graph(data);
+  // customise the graph (lots of options in its data model)
+  graph.settings.general.palette = ['#ff0000', '#00ff00', '#0000ff'];
+  graph.settings.general.background = '#00000002';
 
-// now we can customize this graph object: layout, theme, settings, chart type, etc.
-// as basic exmaple: simply display it as a map
-graph.type = ChartType.MAP;
+  return graph;
+};
+```
 
-// publish the graph to Columns to get a live link
-// the url can be headless by simply appending `?headless` to the url
-columns.publish('test-api', graph)
-.then((url) =>{
-  console.log(url);
-});
+2. (OR) use an existing graph as template to provide new data
+```javascript
+// Call the API to generate the graph and publish it
+// you can append "headless" to the returned URL for an embeddable link.
+const testUsingTemplate = async (columns: Columns): Promise<GraphData> => {
+  // load a template from a pre-designed graph from Columns, so we just need to feed the data
+  // here we are using the example: https://columns.ai/visual/view/U6tALuJ3cTdPFw
+  const visualId = 'U6tALuJ3cTdPFw';
+  const graph = await columns.template(visualId);
+
+  // customise the graph (lots of options in its data model)
+  if (!graph) {
+    console.log(`Failed to load template from Columns: ${visualId}`);
+    return;
+  }
+
+  // rows is an example data set where you should organize your data in a similar way.
+  const data = columns.data(['state'], ['value'], rows);
+  graph.data = data;
+
+  return graph;
+};
+```
+
+3. put all together publish the graph to Columns to get viewable link to share or embed
+```javascript
+  // publish the graph and get a new URL
+  const url = await columns.publish('test-template-api', graph);
+  console.log(`Columns graph: ${url}`);
 ```
 
 After executing a few lines of code as shown above, you will get a new link in the console, similar like 
@@ -54,7 +82,7 @@ or
 https://columns.ai/visual/view/g-qsQ3ySWSnFHJ9x
 ```
 
-Append `headless` URL parameter to make it embeddable in your app or using the pure embed URL, eg. 
+The same visual ID can be embeddable in your app or using the pure embed URL, eg. 
 ```shell
 https://columns.ai/embed/g-qsQ3ySWSnFHJ9x
 ```
@@ -73,6 +101,7 @@ The SDK includes all the core graphing object models and the API client to inter
 The major interfaces of the SDK are:
 - `data` - the data model.
 - `graph` - the graph model.
+- `template` - the API client to load a pre-designed graph from Columns.
 - `publish` - the API client to publish the graph to Columns.
 
 
